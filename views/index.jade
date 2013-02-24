@@ -1,0 +1,60 @@
+head
+  title Zingbot Home
+  link(type="text/css", rel="stylesheet", href="/stylesheets/journal.min.css")
+  script(type="text/javascript", src="/scripts/codemirror.js")
+  script(type="text/javascript", src="/scripts/clike.js")
+  script(type="text/javascript", src="/scripts/homepage.js")
+  link(type="text/css", rel="stylesheet", href="/stylesheets/codemirror.css")
+  style(type="text/css") .CodeMirror {border: 8px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; }
+  style(type="text/css") p{ color: #444; }
+body(onload="loadCode();")
+  div.container
+    div.row
+      div.span12
+        h2 Zingbot
+        
+        h3 Mission
+        p Make the best robotic creations of hackerspaces, museums, and garage tinkerers open for anyone to code.
+        
+      div.span12
+        h3 What To Do
+        p
+          span You can start by&nbsp;
+          span.dropyes dragging or&nbsp;
+          span transferring the code below into the live robot viewer.
+          
+        div.row
+          div.span6
+            textarea#sketchplace
+        
+          div.span1
+            br
+            br
+            br
+            a.btn.btn-success(href="#", onclick="runCode();")
+              span Transfer
+              br
+              span &rarr;
+          
+          div#robotpreview.span4(style="margin-left:30px;")
+            img(src="/images/samplerobot.jpg")
+
+        br
+        p
+          span You can write more complex programs for this robot to drive around, listen to sensors, or run into walls.
+          br
+          span The best place to see video, code, and data in realtime is our&nbsp;
+          a(href="/livestream") livestream
+          span &nbsp;page.
+
+        h3 Technical Details
+
+        p Robots on the site can be programmed by writing code, or by connecting blocks.
+        p The standard programming language is Wiring, the same C-like language used by the Arduino software.
+        //
+          p You can also write JavaScript programs for the johnny-five module, but this only works with the visual programming language.
+        p
+          span This site is written in node.js, and data is stored in a Neo4j network database.
+          span The source code is available under an MIT license&nbsp;
+          a(href="https://github.com/mapmeld/zingbot") on GitHub
+          span .

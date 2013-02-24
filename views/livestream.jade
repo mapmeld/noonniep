@@ -1,0 +1,41 @@
+h1 Livestream
+
+h3 Latest snapshot
+p
+
+  img(src="/robotphoto", style="width:300px;height:200px;float:left;margin-right:14px;")
+  br
+
+  span This photo of the robot was taken #{recentphototime}&nbsp;
+  - if (recentphototime == 1)
+    span minute
+  - else
+    span minutes
+  span &nbsp;ago.
+  br
+
+  - if (program === null)
+    span It is ready to run a new program.
+  - else
+    span It is running a program, #{program}.
+  br
+  br
+
+  span Want to watch the livestream?&nbsp;&nbsp;
+  a(href="javascript:void(0);", onclick="watchLive()") Watch Now
+
+div(style="clear:both;")
+
+h3 In the stream: code and data
+p
+  img(src="/robotgraph", style="width:300px;height:200px;float:left;margin-right:14px;")
+  br
+  span This is a graph of recent data from the robot's light sensor.
+  br
+  span You can monitor this sensor and other datastreams on the livestream page.
+  br
+  br
+  span You'll also see code sent by other programmers!
+
+div(style="clear:both;")
+br
