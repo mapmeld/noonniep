@@ -19,6 +19,9 @@ body(onload="init()", style="background-color:#444;")
         textarea.span10#sketchplace(name="mysketch") #{program.code}
       div.span5
         div(style="margin-left:15px;")
+          - if (program.xml)
+            h4 View Blocks
+            a(href="/blockly/demos/code/index.html?id=#{program.id}") Visual Code
           h4 Writers
           ul#users.spacedlist
             li
