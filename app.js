@@ -35,7 +35,7 @@ app.configure('production', function(){
 });
 
 app.helpers({
-    title: 'Zingbot: Web Robots'
+    title: 'ClangWire: Web Robots'
 });
 
 // Routes
