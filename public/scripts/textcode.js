@@ -8,7 +8,7 @@ function init(){
   //$("dostream").checked = true;
   //$("dosend").checked = false;
 //myCodeMirror = CodeMirror( document.body, {
-  myCodeMirror = CodeMirror.fromTextArea( document.getElementById("sketchplace"), {
+  myCodeMirror = CodeMirror.fromTextArea( $("#sketchplace")[0], {
     lineNumbers: true,
     matchBrackets: true,
     mode: "text/x-csrc"
@@ -20,6 +20,7 @@ function init(){
     var selectedLine = myCodeMirror.getCursor().line;
     if(selectedLine >= 0 && selectedLine != lastSelectLine){
       lastSelectLine = selectedLine;
+      $(".popover").remove();
       smartLine( selectedLine );
     }
   }, 250);
@@ -54,23 +55,26 @@ function smartLine( linenum ){
           }
         }
         if(foundAll){
-          showPopup( helpTerms[w] );
+          showPopup( linenum, helpTerms[w] );
         }
       }
       else{
         if(linewords.indexOf(helpTerms[w]) > -1){
-          showPopup( helpTerms[w] );
+          showPopup( linenum, helpTerms[w] );
         }
       }
     }
  // };
 }
-function showPopup( term ){
-  console.log( term );
+function showPopup( linenum, term ){
+  //console.log( term );
+  $( $(".CodeMirror-lines > div > div > pre")[linenum] ).popover({
+    content: term
+  }).popover('show')
 }
 function writeSample(){
   var sketch = "";
-  switch( document.getElementById("samples").value){
+  switch( $("#samples").val() ){
     case "none":
       sketch = "/* hello */\n\nvoid setup(){\n}\n\nvoid loop(){\n}";
       break;
@@ -93,18 +97,16 @@ function writeSample(){
       sketch = "/* Motor Test */\n#include <Servo.h>\nServo myservo;\nvoid setup(){\n  myservo.attach(9);\n  randomSeed( analogRead(0) );\n}\nvoid loop(){\n  myservo.write( random(0, 180) );\n  delay(5000);\n}";
       break;
     case "current":
-      var s = document.createElement("script");
-      s.src = "/crowdbot/out?get=current&jsonp=update";
-      s.type = "text/javascript";
-      document.body.appendChild(s);
+      //$.getJSON("", function(data){
+      //});
       return;
       break;
   }
   myCodeMirror.setValue( sketch );
 }
 function sendSketch(){
-  document.getElementById("sketchplace").textContent = myCodeMirror.getValue();
-  document.getElementById("submitcode").submit();
+  $("#sketchplace").text( myCodeMirror.getValue() );
+  $("#submitcode")[0].submit();
 }
 function replaceAll(str,oldr,newr){
   while(str.indexOf(oldr) > -1){
