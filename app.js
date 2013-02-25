@@ -35,7 +35,7 @@ app.configure('production', function(){
 });
 
 app.helpers({
-    title: 'ClangWire: Web Robots'
+    title: 'Noonniep: Web Robots'
 });
 
 // Routes
