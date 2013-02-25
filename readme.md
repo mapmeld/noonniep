@@ -46,7 +46,7 @@ The app will now be accessible at [http://localhost:3000/](http://localhost:3000
 ## Create the app and add a neo4j 1.8 addon
 
     heroku create APP_NAME
-    heroku addons:add neo4j --neo4j-version 1.8
+    heroku addons:add neo4j --neo4j-version 1.8.1
     git push heroku master
 
 ## Miscellany
