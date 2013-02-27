@@ -10,6 +10,13 @@ var express = require('express')
 
 var app = module.exports = express.createServer();
 
+// socket.io to sync programs, data between robot and clients
+var io = require('socket.io').listen(app);
+io.configure(function(){
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
 // Configuration
 
 app.configure(function(){
@@ -60,6 +67,22 @@ app.get('/program/xml/:id', routes.program.xmlout);
 app.get('/program/:id', routes.program.show);
 
 app.get('/code-env', routes.robot.code);
+
+var replaceAll = function(str,oldr,newr){
+  while(str.indexOf(oldr) > -1){
+    str = str.replace(oldr,newr);
+  }
+  return str;
+}
+
+// sample IO to users
+app.post('/robotsentdata', function(req, res, next){
+  if(io && io.sockets){
+    io.sockets.emit('newdata', {
+      info: replaceAll(replaceAll(req.body.message, "<", "&lt;"), ">", "&gt;")
+    });
+  }
+});
 
 app.get('/auth', middleware.require_auth_browser, routes.index);
 
