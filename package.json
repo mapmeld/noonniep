@@ -1,7 +1,7 @@
-{ "name": "NodeNeo4jTemplate"
-  , "description": "A sample Node.js + Neo4j app."
+{ "name": "Noonniep"
+  , "description": "Robots over the web"
   , "version": "0.0.1"
-  , "author": "Aseem Kishore <aseem.kishore@gmail.com>"
+  , "author": "Nick Doiron <ndoiron@mapmeld.com>"
   , "private": true
   , "dependencies":
     { "express": "~2.5.8"
@@ -10,6 +10,7 @@
     , "stylus": "~0.27.1"
     , "request": ">=0.10.0"
     , "node-xml": ">=1.0.1"
+    , "socket.io": ">= 0.9.9"
   }
   , "devDependencies":
     { "node-dev": "~0.2.3"
