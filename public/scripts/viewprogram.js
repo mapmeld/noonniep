@@ -4,6 +4,7 @@ var helpTerms = [
   { name: "void loop", about: "The robot repeats code inside the loop function." },
   { name: "Serial", about: "The robot uses Serial to send data and other messages back to a computer / the internet." }
 ];
+$(document).ready(init);
 function init(){
   myCodeMirror = CodeMirror.fromTextArea( document.getElementById("sketchplace"), {
     lineNumbers: true,
@@ -15,6 +16,9 @@ function init(){
   setInterval(function(){
     var selectedLine = myCodeMirror.getCursor().line;
     if(selectedLine >= 0 && selectedLine != lastSelectLine){
+      if($(".popover").length){
+        $(".popover").remove();
+      }
       lastSelectLine = selectedLine;
       smartLine( selectedLine );
     }
@@ -50,19 +54,28 @@ function smartLine( linenum ){
           }
         }
         if(foundAll){
-          showPopup( helpTerms[w].name );
+          showPopup( linenum, helpTerms[w] );
         }
       }
       else{
         if(linewords.indexOf(helpTerms[w].name) > -1){
-          showPopup( helpTerms[w].name );
+          showPopup( linenum, helpTerms[w] );
         }
       }
     }
  // };
 }
-function showPopup( term ){
+function showPopup( linenum, term ){
   console.log( term );
+  $( $(".CodeMirror-lines > div > div > pre")[linenum+1] ).popover({
+  //$(".CodeMirror").popover({
+    title: term.name,
+    content: term.about
+  })
+  .popover('show');
+  setTimeout(function(){
+    $(".popover").css({ left: "640px" });
+  }, 250);
 }
 function replaceAll(str,oldr,newr){
   while(str.indexOf(oldr) > -1){

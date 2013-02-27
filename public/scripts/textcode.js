@@ -1,9 +1,10 @@
 var myCodeMirror, lastSelectLine;
 var helpTerms = [
-  "void setup",
-  "void loop",
-  "Serial"
+  { name: "void setup", about: "The robot reads code inside the setup function once, at the start of the program." },
+  { name: "void loop", about: "The robot repeats code inside the loop function." },
+  { name: "Serial", about: "The robot uses Serial to send data and other messages back to a computer / the internet." }
 ];
+$(document).ready(init);
 function init(){
   //$("dostream").checked = true;
   //$("dosend").checked = false;
@@ -20,7 +21,9 @@ function init(){
     var selectedLine = myCodeMirror.getCursor().line;
     if(selectedLine >= 0 && selectedLine != lastSelectLine){
       lastSelectLine = selectedLine;
-      $(".popover").remove();
+      if($(".popover").length){
+        $(".popover").remove();
+      }
       smartLine( selectedLine );
     }
   }, 250);
@@ -39,10 +42,10 @@ function smartLine( linenum ){
     var linewords = linetext.toLowerCase().split(" ");
     // popup helpful info on terms
     for(var w=0;w<helpTerms.length;w++){
-      if(helpTerms[w].indexOf(" ") > -1){
+      if(helpTerms[w].name.indexOf(" ") > -1){
         // terms like void setup where both words appear & appear in order
         // for example "void setup"
-        var helplist = helpTerms[w].split(" ");
+        var helplist = helpTerms[w].name.split(" ");
         var foundAll = true;
         var lastIndex = 0;
         for(var m=0;m<helplist.length;m++){
@@ -55,22 +58,28 @@ function smartLine( linenum ){
           }
         }
         if(foundAll){
-          showPopup( linenum, helpTerms[w] );
+          showPop( linenum, helpTerms[w] );
         }
       }
       else{
-        if(linewords.indexOf(helpTerms[w]) > -1){
-          showPopup( linenum, helpTerms[w] );
+        if(linewords.indexOf(helpTerms[w].name) > -1){
+          showPop( linenum, helpTerms[w] );
         }
       }
     }
  // };
 }
-function showPopup( linenum, term ){
+function showPop( linenum, term ){
   //console.log( term );
-  $( $(".CodeMirror-lines > div > div > pre")[linenum] ).popover({
-    content: term
-  }).popover('show')
+  $( $(".CodeMirror-lines > div > div > pre")[linenum+1] ).popover({
+  //$(".CodeMirror").popover({
+    title: term.name,
+    content: term.about
+  })
+  .popover('show');
+  setTimeout(function(){
+    $(".popover").css({ left: "640px" });
+  }, 250);
 }
 function writeSample(){
   var sketch = "";

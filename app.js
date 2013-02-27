@@ -11,11 +11,11 @@ var express = require('express')
 var app = module.exports = express.createServer();
 
 // socket.io to sync programs, data between robot and clients
-var io = require('socket.io').listen(app);
+/*var io = require('socket.io').listen(app);
 io.configure(function(){
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10); 
-});
+});*/
 
 // Configuration
 
