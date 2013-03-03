@@ -69,7 +69,9 @@ function showPopup( linenum, term ){
   })
   .popover('show');
   setTimeout(function(){
-    $(".popover").css({ left: "640px" });
+    $(".popover").animate({
+      left: "640px"
+    }, 500);
   }, 250);
 }
 function traceSource(){
