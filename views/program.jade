@@ -8,9 +8,10 @@ head
   script(type="text/javascript", src="/scripts/helpterms.js")
   script(type="text/javascript", src="/scripts/viewprogram.js")
   link(type="text/css", rel="stylesheet", href="/stylesheets/journal.min.css")
+  script(type="text/javascript") program_id = "#{program.id}";
   link(type="text/css", rel="stylesheet", href="/stylesheets/textcode.css")
   link(type="text/css", rel="stylesheet", href="/stylesheets/codemirror.css")
-  style(type="text/css") .CodeMirror {border: 2px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; } .popover-title{ font-size: 18px; }
+  style(type="text/css") a{ color:#44a; } .CodeMirror {border: 2px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; } .popover-title{ font-size: 18px; }
 
 body(style="background-color:#444;")
   div.container(style="padding:30px;background-color:#fff;")
@@ -31,14 +32,17 @@ body(style="background-color:#444;")
           a(href="/code-env/from/#{program.id}") Fork this program
           hr
           - if(follows != null)
-            - for source in follows
-              p
-                span Based on&nbsp;
-                - if (source.other._data.data.name)
-                  a(href="/program/#{source.other.id}") #{source.other._data.data.name}
-                - else
-                  a(href="/program/#{source.other.id}") Program ##{source.other.id}
-          
+            div#completeHistory
+              - for source in follows
+                p
+                  span Based on&nbsp;
+                  - if (source.other._data.data.name)
+                    a(href="/program/#{source.other.id}") #{source.other._data.data.name}
+                  - else
+                    a(href="/program/#{source.other.id}") Program ##{source.other.id}
+              a(href="#", onclick="traceSource()") See complete history
+          br
+
           h4 Writers
           ul#users.spacedlist
             li

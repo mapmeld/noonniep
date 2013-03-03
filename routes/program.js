@@ -81,6 +81,17 @@ exports.code = function (req, res, next) {
 	}
 };
 
+// GET /program/history/:id
+exports.historyout = function (req, res, next) {
+    Program.get(req.params.id, function (err, program) {
+        if (err) return next(err);
+        program.getPastPrograms(function(err, history){
+          if (err) return next(err);
+          res.json( history );
+        });
+    });
+};
+
 // GET /program/xml/:id
 exports.xmlout = function (req, res, next) {
     Program.get(req.params.id, function (err, program) {

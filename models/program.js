@@ -101,7 +101,6 @@ Program.prototype.unfollow = function (other, callback) {
 
 // shortcut to get just the ones this program follows
 Program.prototype.getFollowing = function (callback) {
-    // query all programs and whether we follow each one or not:
     var query = [
         'START program=node({programId})',
         'MATCH (program) -[rel?:FOLLOWS_REL]-> (other)',
@@ -124,6 +123,30 @@ Program.prototype.getFollowing = function (callback) {
             results[i].other.id = results[i].other._data.data.self;
           }
         }
+        callback(null, results);
+    });
+};
+
+// return all programs this program is based on A -[basedon]-> B -[basedon]-> C
+Program.prototype.getPastPrograms = function (callback) {
+    var query = [
+        'START program=node({programId}), other=node:nodes(type="program")',
+        'MATCH p = program -[*..15]-> other',
+        'RETURN p, other'
+    ].join('\n')
+        .replace('INDEX_NAME', INDEX_NAME)
+        .replace('INDEX_KEY', INDEX_KEY)
+        .replace('INDEX_VAL', INDEX_VAL)
+        .replace('FOLLOWS_REL', FOLLOWS_REL);
+
+    var params = {
+        programId: this.id,
+    };
+
+    var program = this;
+    db.query(query, params, function (err, results) {
+        if (err) return callback(err);
+        
         callback(null, results);
     });
 };
