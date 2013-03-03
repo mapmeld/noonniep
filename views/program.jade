@@ -35,7 +35,10 @@ body(style="background-color:#444;")
         div(style="margin-left:15px;")
           - if (program.xml)
             h4 View Blocks
-            a(href="/blockly/demos/code/index.html?id=#{program.id}") Visual Code
+            a(href="/blockly/demos/code/index.html?id=#{program.id}")
+              span Visual Code
+              br
+              img(src="http://i.imgur.com/tQRIi.png", style="width:80px;")
 
           h4 Adopt &amp; Adapt
           a(href="/code-env/from/#{program.id}") Fork this program
