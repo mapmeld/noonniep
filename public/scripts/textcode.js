@@ -35,7 +35,7 @@ function smartLine( linenum ){
     linetext = replaceAll(linetext, ";", " ");
     linetext = replaceAll(linetext, "	", " "); // remove tabs
     linetext = replaceAll(linetext, "  ", "");
-    var linewords = linetext.toLowerCase().split(" ");
+    var linewords = linetext.split(" ");
     // popup helpful info on terms
     for(var w=0;w<helpTerms.length;w++){
       if(helpTerms[w].name.indexOf(" ") > -1){
@@ -54,12 +54,12 @@ function smartLine( linenum ){
           }
         }
         if(foundAll){
-          showPop( linenum, helpTerms[w] );
+          return showPop( linenum, helpTerms[w] );
         }
       }
       else{
         if(linewords.indexOf(helpTerms[w].name) > -1){
-          showPop( linenum, helpTerms[w] );
+          return showPop( linenum, helpTerms[w] );
         }
       }
     }
@@ -67,6 +67,7 @@ function smartLine( linenum ){
 }
 function showPop( linenum, term ){
   //console.log( term );
+  console.log(term.name);
   $( $(".CodeMirror-lines > div > div > pre")[linenum+1] ).popover({
   //$(".CodeMirror").popover({
     title: term.name,

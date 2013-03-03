@@ -30,7 +30,7 @@ function smartLine( linenum ){
     linetext = replaceAll(linetext, ";", " ");
     linetext = replaceAll(linetext, "	", " "); // remove tabs
     linetext = replaceAll(linetext, "  ", "");
-    var linewords = linetext.toLowerCase().split(" ");
+    var linewords = linetext.split(" ");
     // popup helpful info on terms
     for(var w=0;w<helpTerms.length;w++){
       if(helpTerms[w].name.indexOf(" ") > -1){
@@ -49,12 +49,12 @@ function smartLine( linenum ){
           }
         }
         if(foundAll){
-          showPopup( linenum, helpTerms[w] );
+          return showPopup( linenum, helpTerms[w] );
         }
       }
       else{
         if(linewords.indexOf(helpTerms[w].name) > -1){
-          showPopup( linenum, helpTerms[w] );
+          return showPopup( linenum, helpTerms[w] );
         }
       }
     }
