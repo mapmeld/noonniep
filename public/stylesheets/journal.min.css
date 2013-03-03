@@ -484,7 +484,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .nav>li>a{display:block;}
 .nav>li>a:hover{text-decoration:none;background-color:#eeeeee;}
 .nav>.pull-right{float:right;}
-.nav .nav-header{display:block;padding:3px 15px;font-size:11px;font-weight:bold;line-height:18px;color:#bbbbbb;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);text-transform:uppercase;}
+.nav .nav-header{display:block;padding:3px 15px;font-size:11px;font-weight:bold;line-height:18px;color:#bbbbbb;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
 .nav li+.nav-header{margin-top:9px;}
 .nav-list{padding-left:15px;padding-right:15px;margin-bottom:0;}
 .nav-list>li>a,.nav-list .nav-header{margin-left:-15px;margin-right:-15px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
@@ -722,8 +722,8 @@ h6{color:#000000;font-weight:bold;}
 p>a,address>a,.breadcrumb a,abbr[title]{text-decoration:none;border-bottom:1px dotted;}p>a:hover,address>a:hover,.breadcrumb a:hover,abbr[title]:hover{text-decoration:none;border-bottom:1px solid;}
 .page-header{border-bottom:2px solid #eeeeee;}
 .navbar{font-family:"News Cycle","Arial Narrow Bold",sans-serif;font-weight:bold;}.navbar .navbar-inner{border-top:2px solid #eeeeee;border-bottom:2px solid #eeeeee;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
-.navbar .brand{padding:16px 20px 20px;font-size:24px;font-weight:bold;text-shadow:none;text-transform:uppercase;}
-.navbar .nav>li>a{padding:20px 10px 21px;font-size:18px;text-shadow:none;text-transform:uppercase;}
+.navbar .brand{padding:16px 20px 20px;font-size:24px;font-weight:bold;text-shadow:none;}
+.navbar .nav>li>a{padding:20px 10px 21px;font-size:18px;text-shadow:none;}
 .navbar .nav>li.active>a{background-color:transparent;color:#000000;}
 .navbar .navbar-text{margin-top:21px;padding-left:10px;padding-right:10px;font-size:18px;line-height:18px;}
 .navbar .nav li.dropdown>.dropdown-toggle:hover,.navbar .nav li.dropdown.active>.dropdown-toggle:hover{color:#000000;}

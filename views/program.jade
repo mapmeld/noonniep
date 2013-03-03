@@ -11,9 +11,18 @@ head
   script(type="text/javascript") program_id = "#{program.id}";
   link(type="text/css", rel="stylesheet", href="/stylesheets/textcode.css")
   link(type="text/css", rel="stylesheet", href="/stylesheets/codemirror.css")
-  style(type="text/css") a{ color:#44a; } .CodeMirror {border: 2px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; } .popover-title{ font-size: 18px; }
+  style(type="text/css") a{ color:#44a; } .navbar{ zoom: 0.6; } .CodeMirror {border: 2px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; } .popover-title{ font-size: 18px; }
 
 body(style="background-color:#444;")
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="/", style="text-transform:none;") Noonniep!
+        a.brand(href="/code-env")
+          u New Program
+        a.brand(href="/blockly/demos/code/index.html")
+          u Block Editor
+
   div.container(style="padding:30px;background-color:#fff;")
     div.row
       div.span7
