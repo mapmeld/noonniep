@@ -5,6 +5,7 @@ head
   script(type="text/javascript", src="/scripts/jquery-1.7.2.min.js")
   //
     script(type="text/javascript", src="/scripts/bootstrap.min.js")
+  script(type="text/javascript", src="/scripts/helpterms.js")
   script(type="text/javascript", src="/scripts/textcode.js")
   link(type="text/css", rel="stylesheet", href="/stylesheets/journal.min.css")
   link(type="text/css", rel="stylesheet", href="/stylesheets/textcode.css")
@@ -34,17 +35,21 @@ body(style="background-color:#444;")
           br
           br
           h4(style="display:inline;margin-right:20px;") Write Sketch or Select:
-          select#samples(href='#', onchange='writeSample()')
-            option(value="none") -
-            option(value="blink") Blink Test
-            option(value="sensor") Sensor Test
-            option(value="servo") Motor Test
-            option(value="hello") Stream Test
-            option(value="random") Random Blink
-            option(value="streamer") Data Streamer
-            option(value="current") Current Sketch
-          br
-          textarea.span10#sketchplace(name="mysketch")
+          - if (program == null)
+            select#samples(href='#', onchange='writeSample()')
+              option(value="none") -
+              option(value="blink") Blink Test
+              option(value="sensor") Sensor Test
+              option(value="servo") Motor Test
+              option(value="hello") Stream Test
+              option(value="random") Random Blink
+              option(value="streamer") Data Streamer
+            br
+            textarea.span10#sketchplace(name="mysketch")
+          - else
+            br
+            input(type="hidden", name="basedon", value="#{program.id}")
+            textarea.span10#sketchplace(name="mysketch") #{program.code}
           br
           a.btn.btn-primary(href="#", onclick="sendSketch()") Send Sketch
       div.span5

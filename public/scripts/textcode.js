@@ -1,9 +1,4 @@
 var myCodeMirror, lastSelectLine;
-var helpTerms = [
-  { name: "void setup", about: "The robot reads code inside the setup function once, at the start of the program." },
-  { name: "void loop", about: "The robot repeats code inside the loop function." },
-  { name: "Serial", about: "The robot uses Serial to send data and other messages back to a computer / the internet." }
-];
 $(document).ready(init);
 function init(){
   //$("dostream").checked = true;
@@ -14,8 +9,9 @@ function init(){
     matchBrackets: true,
     mode: "text/x-csrc"
   });
-  myCodeMirror.setValue("/* hello */\n\nvoid setup(){\n}\n\nvoid loop(){\n}");
-  
+  if(!($("#sketchplace").val().length)){
+    myCodeMirror.setValue("/* hello */\n\nvoid setup(){\n}\n\nvoid loop(){\n}");
+  }  
 
   setInterval(function(){
     var selectedLine = myCodeMirror.getCursor().line;
@@ -104,11 +100,6 @@ function writeSample(){
       break;
     case "servo":
       sketch = "/* Motor Test */\n#include <Servo.h>\nServo myservo;\nvoid setup(){\n  myservo.attach(9);\n  randomSeed( analogRead(0) );\n}\nvoid loop(){\n  myservo.write( random(0, 180) );\n  delay(5000);\n}";
-      break;
-    case "current":
-      //$.getJSON("", function(data){
-      //});
-      return;
       break;
   }
   myCodeMirror.setValue( sketch );

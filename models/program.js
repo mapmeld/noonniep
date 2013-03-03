@@ -99,6 +99,35 @@ Program.prototype.unfollow = function (other, callback) {
     });
 };
 
+// shortcut to get just the ones this program follows
+Program.prototype.getFollowing = function (callback) {
+    // query all programs and whether we follow each one or not:
+    var query = [
+        'START program=node({programId})',
+        'MATCH (program) -[rel?:FOLLOWS_REL]-> (other)',
+        'RETURN other'
+    ].join('\n')
+        .replace('INDEX_NAME', INDEX_NAME)
+        .replace('INDEX_KEY', INDEX_KEY)
+        .replace('INDEX_VAL', INDEX_VAL)
+        .replace('FOLLOWS_REL', FOLLOWS_REL);
+
+    var params = {
+        programId: this.id,
+    };
+
+    var program = this;
+    db.query(query, params, function (err, results) {
+        if (err) return callback(err);
+        for(var i=0;i<results.length;i++){
+          if(results[i].other){
+            results[i].other.id = results[i].other._data.data.self;
+          }
+        }
+        callback(null, results);
+    });
+};
+
 // calls callback w/ (err, following, others) where following is an array of
 // programs this program follows, and others is all other programs minus him/herself.
 Program.prototype.getFollowingAndOthers = function (callback) {

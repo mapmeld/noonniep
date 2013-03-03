@@ -10,8 +10,3 @@ exports.photo = function (req, res, next) {
 exports.graph = function (req, res, next) {
     res.redirect( 'http://google.com/graphvis/api' );
 };
-
-// GET /code-env
-exports.code = function (req, res, next) {
-	res.render( 'textcode' );
-};

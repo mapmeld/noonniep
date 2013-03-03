@@ -66,7 +66,8 @@ app.post('/program', routes.program.create);
 app.get('/program/xml/:id', routes.program.xmlout);
 app.get('/program/:id', routes.program.show);
 
-app.get('/code-env', routes.robot.code);
+app.get('/code-env/from/:id', routes.program.code);
+app.get('/code-env', routes.program.code);
 
 var replaceAll = function(str,oldr,newr){
   while(str.indexOf(oldr) > -1){
