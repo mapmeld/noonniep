@@ -6,7 +6,8 @@ function init(){
     matchBrackets: true,
     readOnly: true,
     mode: "text/x-csrc"
-  });  
+  });
+  $(".CodeMirror-lines > div").css({"margin-left": "28px"});
 
   setInterval(function(){
     var selectedLine = myCodeMirror.getCursor().line;
@@ -61,7 +62,7 @@ function smartLine( linenum ){
  // };
 }
 function showPopup( linenum, term ){
-  console.log( term );
+  //console.log( term );
   $( $(".CodeMirror-lines > div > div > pre")[linenum+1] ).popover({
   //$(".CodeMirror").popover({
     title: term.name,

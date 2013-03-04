@@ -9,6 +9,7 @@ function init(){
     matchBrackets: true,
     mode: "text/x-csrc"
   });
+  $(".CodeMirror-lines > div").css({"margin-left": "28px"});
   if(!($("#sketchplace").val().length)){
     myCodeMirror.setValue("/* hello */\n\nvoid setup(){\n}\n\nvoid loop(){\n}");
   }  
@@ -67,7 +68,7 @@ function smartLine( linenum ){
 }
 function showPop( linenum, term ){
   //console.log( term );
-  console.log(term.name);
+  //console.log(term.name);
   $( $(".CodeMirror-lines > div > div > pre")[linenum+1] ).popover({
   //$(".CodeMirror").popover({
     title: term.name,
