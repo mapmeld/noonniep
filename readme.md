@@ -1,12 +1,18 @@
-# About Zingbot
+# About Noonniep
 
-Zingbot is an experimental rewrite of Arduino-over-the-web projects <a href="https://github.com/mapmeld/crowdbot">CrowdBot</a> and <a href="https://github.com/mapmeld/crowdbotblock">CrowdBotBlock</a>.
+Noonniep is an experimental rewrite of Arduino-over-the-web projects <a href="https://github.com/mapmeld/crowdbot">CrowdBot</a> and <a href="https://github.com/mapmeld/crowdbotblock">CrowdBotBlock</a>.
+
 
 ## Key Features
 
-- Code editor and viewer powered by <a href="http://codemirror.net">CodeMirror</a>.
+- Code editor and viewer powered by <a href="http://codemirror.net">CodeMirror</a> and Bootstrap popovers.
+
+<img src="http://i.imgur.com/2pXW93h.png"/>
 
 - Users, programs, and data to be stored in a <a href="http://neo4j.org">Neo4j</a> graph database
+
+<img src="http://i.imgur.com/OPxjGtb.png"/>
+<img src="http://i.imgur.com/l6TYBO1.png"/>
 
 - Lowering barrier to livestream by showing a live, updating picture of the robot on the homepage
 
