@@ -5,6 +5,9 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , mongoose = require('mongoose')
+  , mongoose_auth = require('mongoose-auth')
+  , mongoStore = require('connect-mongo')(express)
   , middleware = require('./middleware')
   ;
 
@@ -17,17 +20,25 @@ io.configure(function(){
   io.set("polling duration", 10); 
 });
 
+// use MongoDB to authenticate users
+var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || config.default_db_uri;
+mongoose.connect(db_uri);
+session_store = new mongoStore({url: db_uri});
+
 // Configuration
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.set('view options', { pretty: true });
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
-  
   app.use(express.cookieParser());
-  //app.use(express.session({secret: 'top secret', store: (process.env.NEO4J_URL || 'http://localhost:7474'), cookie: {maxAge: 3600000 }}));
+
+  app.use(express.session({secret: 'b9gjuw23dhj288a1', store: session_store,
+      cookie: {maxAge: 24 * 60 * 60 * 1000}}));
+  app.use(mongoose_auth.middleware());
 
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
