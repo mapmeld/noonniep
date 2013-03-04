@@ -9,7 +9,9 @@ function init(){
     matchBrackets: true,
     mode: "text/x-csrc"
   });
-  $(".CodeMirror-lines > div").css({"margin-left": "28px"});
+  setTimeout(function(){
+    $(".CodeMirror-lines > div").css({"margin-left": "28px"});
+  }, 250);
   if(!($("#sketchplace").val().length)){
     myCodeMirror.setValue("/* hello */\n\nvoid setup(){\n}\n\nvoid loop(){\n}");
   }  
