@@ -28,7 +28,7 @@ void setup(){
 }
 
 void loop(){
-  Serial.println( analogRead(0) );
+  Serial.println( analogRead(2) );
   delay( 1500 );
 }
 
