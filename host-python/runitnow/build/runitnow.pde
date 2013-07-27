@@ -1,2 +1,13 @@
-#include <WProgram.h>
-2okGPK  <a href="http://frlrmsvvmtps.com/">frlrmsvvmtps</a>, [url=http://cyryzjekykep.com/]cyryzjekykep[/url], [link=http://tudijfjpbund.com/]tudijfjpbund[/link], http://jqlcoksvaoyo.com/
+/*
+  Blink Test
+  pin 13 is orange indicator on Arduino
+ */
+void setup() {
+  pinMode(13, OUTPUT);
+}
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(3000);
+  digitalWrite(13, LOW);
+  delay(2000);
+}

@@ -235,7 +235,7 @@ Program.getLatest = function (callback) {
     var query = [
         'START programs=node:nodes(type="program")',
         'RETURN programs',
-        'ORDER BY programs.created?',
+        'ORDER BY programs.created? DESC',
         'LIMIT 1'
     ].join('\n');
 

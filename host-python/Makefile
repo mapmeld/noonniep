@@ -51,9 +51,10 @@
 PORT = /dev/cu.usbmodemfd121
 TARGET = runitnow
 ARDUINO = lib/targets/arduino
-SRC = $(ARDUINO)/buffer.c $(ARDUINO)/pins_arduino.c \
-  $(ARDUINO)/Serial.c $(ARDUINO)/uart.c $(ARDUINO)/wiring.c
-CXXSRC = $(TARGET).cpp $(ARDUINO)/HardwareSerial.cpp $(ARDUINO)/WRandom.cpp
+SRC = $(ARDUINO)/arduino.h
+#SRC = $(ARDUINO)/buffer.c $(ARDUINO)/pins_arduino.c \
+#  $(ARDUINO)/Serial.c $(ARDUINO)/uart.c $(ARDUINO)/wiring.c
+CXXSRC = $(TARGET).cpp #$(ARDUINO)/HardwareSerial.cpp $(ARDUINO)/WRandom.cpp
 MCU = atmega8
 F_CPU = 16000000
 FORMAT = ihex
