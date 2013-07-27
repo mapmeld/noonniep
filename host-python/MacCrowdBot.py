@@ -51,13 +51,12 @@ while loops < 125:
             # init data archive
             outbox = ""
             # open serial port - configure to your computer!
-            ser = serial.Serial('/dev/tty.usbmodemfa131', 9600, timeout=0.5)
+            ser = serial.Serial('/dev/tty.usbmodemfa131', 115200, timeout=0.25)
             # attempt to read serial while program runs for the next two minutes
             while( (datetime.datetime.now() - msstart).seconds < 120 ):
                 line = ser.readline().replace('\r','').replace('\n','')
                 if(line.replace(' ','').replace('    ','') != ""):
                     # send streaming data to server
-                    print line
                     if(dostream == "TRUE"):
                         urllib.urlopen(appinstance + '/speak', urllib.urlencode({'info':line}))
 

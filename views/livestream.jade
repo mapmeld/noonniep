@@ -1,44 +1,40 @@
-h1 Livestream
+head
+  title Noonniep Livestream
+  script(src="/socket.io/socket.io.js", type="text/javascript")
+  link(type="text/css" rel="stylesheet" href="/stylesheets/journal.min.css")
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+    
+        a.brand(href="/") Noonniep
+        a.brand(href="/blockly/demos/code/index.html", style="text-transform:none;") Code Editor
+        a.brand(href="/livestream", style="text-transform:none;") Livestream
 
-h3 Latest snapshot
-p
+  div.container
+    .row
+      .span7
+        h3 Watch Robot
+        iframe(src="http://www.ustream.tv/embed/9893969", width="500", height="350", scrolling="no", frameborder="0", style="border: 0px none transparent;")
+        br
+        h3 Data Stream
+        ul#livedata(style="margin-left:-30px;border:1px solid #000;padding:6px;height:400px;overflow-y:scroll;")
+      .span5
+        #wait(style="display:none;padding:10px;background-color:#ffffaa;")
+          #wait-inner
+            h4 Your program is in the cue
+            p Please wait.
 
-  img(src="/robotphoto", style="width:300px;height:200px;float:left;margin-right:14px;")
-  br
+        h4#codename Program: #{program.name}
+        p
+          span Updated in realtime by&nbsp;
+          a(href="http://socket.io", target="_blank") socket.io
+    br
+    br
 
-  span This photo of the robot was taken #{recentphototime}&nbsp;
-  - if (recentphototime == 1)
-    span minute
-  - else
-    span minutes
-  span &nbsp;ago.
-  br
-
-  - if (program === null)
-    span It is ready to run a new program.
-  - else
-    span It is running a program, #{program}.
-  br
-  br
-
-  span Want to watch the livestream?&nbsp;&nbsp;
-  a(href="javascript:void(0);", onclick="watchLive()") Watch Now
-
-div(style="clear:both;")
-
-h3 In the stream: code and data
-p
-  img(src="/robotgraph", style="width:300px;height:200px;float:left;margin-right:14px;")
-  br
-  span This is a graph of recent data from the robot's light sensor.
-  br
-  span You can monitor this sensor and other datastreams on the livestream page.
-  br
-  br
-  span You'll also see code sent by other programmers!
-
-div(style="clear:both;")
-br
-
-script(src="/socket.io/socket.io.js", type="text/javascript")
-script(type="text/javascript") var socket = io.connect(window.location.hostname); socket.on('newprogram', function(data){ }); socket.on('newdata', function(data){ });
+  script(type="text/javascript") var nowid = "#{program.id}";
+  script(src="/scripts/livestream.js", type="text/javascript")
