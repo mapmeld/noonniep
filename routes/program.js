@@ -99,3 +99,11 @@ exports.xmlout = function (req, res, next) {
         res.json( { xml: (program.xml || "") } );
     });
 };
+
+// GET /program/latest
+export.latest = function (req, res, next) {
+    Program.getLatest(function(err, program){
+      if(err) return next(err);
+      res.json( { code: (program.code || "") } );
+    });
+};

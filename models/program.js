@@ -46,6 +46,7 @@ proxyProperty('exists');
 proxyProperty('name', true);
 proxyProperty('code', true);
 proxyProperty('xml', true);
+proxyProperty('created', true);
 
 // private instance methods:
 
@@ -227,5 +228,18 @@ Program.create = function (data, callback) {
             if (err) return callback(err);
             callback(null, program);
         });
+    });
+};
+
+Program.latest = function (data, callback) {
+    var query = [
+        'START programs=node:nodes(type="program")',
+        'RETURN programs',
+        'ORDER BY programs.created?',
+        'LIMIT 1'
+    ].join('\n');
+
+    db.query(query, function (err, results) {
+      callback( err, results );
     });
 };
