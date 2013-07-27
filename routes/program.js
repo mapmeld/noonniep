@@ -104,6 +104,11 @@ exports.xmlout = function (req, res, next) {
 exports.latest = function (req, res, next) {
     Program.getLatest(function(err, program){
       if(err) return next(err);
-      res.json( { code: (program.code || "") } );
+      if(program.length && program[0].code){
+        res.json( { code: (program.code || "") } );
+      }
+      else{
+        res.json( {} );
+      }
     });
 };

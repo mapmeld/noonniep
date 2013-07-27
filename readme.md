@@ -49,11 +49,18 @@ The app will now be accessible at [http://localhost:3000/](http://localhost:3000
 
 # Uploading to Heroku
 
-## Create the app and add a neo4j 1.8 addon
+## Create the app
 
     heroku create APP_NAME
+
+# Add a Neo4j add-on (this sometimes takes a few tries)
+
     heroku addons:add neo4j --neo4j-version 1.8.1
     git push heroku master
+
+# Add a MongoLab add-on to authenticate users
+
+    heroku addons:add mongolab:starter
 
 ## Miscellany
 
