@@ -76,8 +76,8 @@ app.get('/robotgraph', routes.robot.graph);
 app.post('/program', routes.program.create);
 app.get('/program/xml/:id', routes.program.xmlout);
 app.get('/program/history/:id', routes.program.historyout);
-app.get('/program/:id', routes.program.show);
 app.get('/program/latest', routes.program.latest);
+app.get('/program/:id', routes.program.show);
 
 app.get('/code-env/from/:id', routes.program.code);
 app.get('/code-env', routes.program.code);
