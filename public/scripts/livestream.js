@@ -7,7 +7,7 @@ function getURLParameter(name) {
 if(getURLParameter("id") != "null"){
 }
 
-var datapoints = [ [-1, 0], [-0.5, 0] ];
+var datapoints = [ ];
    $("#graph").highcharts({
       chart: {
         type: 'line'
@@ -32,7 +32,7 @@ var datapoints = [ [-1, 0], [-0.5, 0] ];
         enabled: false
       },
       series: [{
-        name: key,
+        name: "Data Plot",
         data: datapoints
       }],
       plotOptions: {
@@ -41,10 +41,10 @@ var datapoints = [ [-1, 0], [-0.5, 0] ];
             enabled: false
           }
         }
-      },
+      } /*,
       tooltip: {
         formatter: tooltipFunction(key)
-      }
+      }*/
     });
 
 var socket = io.connect(window.location.hostname);
