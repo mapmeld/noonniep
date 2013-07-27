@@ -56,6 +56,7 @@ while loops < 125:
             while( (datetime.datetime.now() - msstart).seconds < 120 ):
                 line = ser.readline().replace('\r','').replace('\n','')
                 if(line.replace(' ','').replace('    ','') != ""):
+                    print line
                     # send streaming data to server
                     if(dostream == "TRUE"):
                         urllib.urlopen(appinstance + '/speak', urllib.urlencode({'info':line}))

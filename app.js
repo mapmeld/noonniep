@@ -90,7 +90,7 @@ var replaceAll = function(str,oldr,newr){
 }
 
 // sample IO to users
-app.post('/robotsentdata', function(req, res, next){
+app.post('/speak', function(req, res, next){
   if(io && io.sockets){
     io.sockets.emit('newdata', {
       info: replaceAll(replaceAll(req.body.message, "<", "&lt;"), ">", "&gt;")
