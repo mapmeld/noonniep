@@ -240,9 +240,6 @@ Program.getLatest = function (callback) {
     ].join('\n');
 
     db.query(query, { }, function (err, results) {
-      if(results.length){
-        results = [ new Program( results[0] ) ];
-      }
       callback( err, results );
     });
 };
