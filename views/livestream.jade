@@ -29,7 +29,8 @@ body
         ul#livedata(style="margin-left:-30px;border:1px solid #000;padding:6px;height:400px;overflow-y:scroll;")
       .span5
         h4#codename Program: #{program.name}
-        textarea#sketchplace #{program.code}
+        div#sketchholder
+          textarea#sketchplace #{program.code}
         p
           span Code highlighting by&nbsp;
           a(href="http://codemirror.net/", target="_blank") CodeMirror        

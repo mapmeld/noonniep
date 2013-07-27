@@ -73,7 +73,6 @@ app.get('/livestream', routes.livestream.watch);
 app.get('/robotphoto', routes.robot.photo);
 app.get('/robotgraph', routes.robot.graph);
 
-app.post('/program', routes.program.create);
 app.get('/program/xml/:id', routes.program.xmlout);
 app.get('/program/history/:id', routes.program.historyout);
 app.get('/program/latest', routes.program.latest);

@@ -53,9 +53,26 @@ var myCodeMirror = CodeMirror.fromTextArea( $("#sketchplace")[0], {
 
 var socket = io.connect(window.location.hostname);
 socket.on('newprogram', function(data){
+  console.log(data);
+  $("#codename").text("Program " + data.name );
+  var refreshcode = $("<textarea id='sketchplace'>").text( data.code );
+  if( typeof data.xml != "undefined" ){
+    // link to blocks!
+  }
+  $("#sketchholder").html("").append( refreshcode );
+  myCodeMirror = CodeMirror.fromTextArea( $("#sketchplace")[0], {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-csrc",
+    readOnly: true
+  });
+  
+  // clear dataset
+  datapoints = [ ];
+  $('#graph').highcharts().series[0].setData(datapoints);
 });
 socket.on('newdata', function(data){
-  console.log(data.info);
+  //console.log(data.info);
   var line = $("<li>");
   $(line).html(data.info);  
   $("#livedata").append(line);
