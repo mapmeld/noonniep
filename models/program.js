@@ -231,7 +231,7 @@ Program.create = function (data, callback) {
     });
 };
 
-Program.latest = function (data, callback) {
+Program.latest = function (callback) {
     var query = [
         'START programs=node:nodes(type="program")',
         'RETURN programs',
@@ -239,7 +239,7 @@ Program.latest = function (data, callback) {
         'LIMIT 1'
     ].join('\n');
 
-    db.query(query, function (err, results) {
+    db.query(query, { }, function (err, results) {
       callback( err, results );
     });
 };
