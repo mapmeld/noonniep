@@ -231,7 +231,7 @@ Program.create = function (data, callback) {
     });
 };
 
-Program.latest = function (callback) {
+Program.getLatest = function (callback) {
     var query = [
         'START programs=node:nodes(type="program")',
         'RETURN programs',
