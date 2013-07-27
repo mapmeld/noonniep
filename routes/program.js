@@ -8,6 +8,7 @@ exports.create = function(req, res, next){
   Program.create({
     name: req.body.sketchname,
     xml: (req.body.xml || ""),
+    created: ( new Date() ) * 1,
     code: req.body.mysketch
   }, function(err, np){
     if(err){
