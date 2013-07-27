@@ -68,6 +68,7 @@ socket.on('newprogram', function(data){
   });
   
   // clear dataset
+  $("#livedata").html("");
   datapoints = [ ];
   $('#graph').highcharts().series[0].setData(datapoints);
 });
