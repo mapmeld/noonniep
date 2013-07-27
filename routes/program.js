@@ -107,7 +107,7 @@ exports.latest = function (req, res, next) {
       if(err) return next(err);
       if(program.length){
         //res.json( program[0] );
-        res.json( { program[0].programs._data.data } );
+        res.json( program[0].programs._data.data );
       }
       else{
         res.json( {} );
