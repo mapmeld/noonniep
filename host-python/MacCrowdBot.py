@@ -9,6 +9,8 @@ import time, urllib, os, json
 # also configure serial.Serial line to appropriate Arduino USB port
 import datetime, serial
 
+# prepare and test ARSCONS from https://github.com/suapapa/arscons
+
 # configure app instance for your installation
 appinstance = "http://noonniep.herokuapp.com"
 
@@ -51,7 +53,7 @@ while loops < 125:
             # init data archive
             outbox = ""
             # open serial port - configure to your computer!
-            ser = serial.Serial('/dev/tty.usbmodemfa131', 115200, timeout=0.25)
+            ser = serial.Serial('/dev/tty.usbmodemfa131', 115200, timeout=0.5)
             # attempt to read serial while program runs for the next two minutes
             while( (datetime.datetime.now() - msstart).seconds < 120 ):
                 line = ser.readline().replace('\r','').replace('\n','')
@@ -59,7 +61,7 @@ while loops < 125:
                     print line
                     # send streaming data to server
                     if(dostream == "TRUE"):
-                        urllib.urlopen(appinstance + '/speak', urllib.urlencode({'info':line}))
+                        urllib.urlopen(appinstance + '/speak', urllib.urlencode({'message':line})).read()
 
             # close serial port
             ser.close()

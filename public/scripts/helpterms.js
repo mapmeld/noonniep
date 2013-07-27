@@ -1,8 +1,8 @@
 var helpTerms = [
   { name: "void setup", about: "The robot reads code inside the setup function once, at the start of the program." },
   { name: "void loop", about: "The robot repeats code inside the loop function." },
-  { name: "Serial begin", about: "Use Serial.begin(9600) to pass messages to the computer and internet" },
-  { name: "Serial println", about: "send a message (number or text) to the computer and internet" },
+  { name: "Serial begin", about: "Use Serial.begin(115200) to pass messages to the computer and internet" },
+  { name: "Serial println", about: "Send a message (number or text) to the computer and internet. Make sure you have Serial.begin in setup" },
   { name: "Serial", about: "The robot uses Serial to send data and other messages back to a computer / the internet." },
   { name: "pinMode INPUT", about: "Prepares a pin for input from sensors" },
   { name: "pinMode OUTPUT", about: "Prepares a pin for output to lights, motors, etc" },

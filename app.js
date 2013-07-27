@@ -95,6 +95,7 @@ app.post('/speak', function(req, res, next){
     io.sockets.emit('newdata', {
       info: replaceAll(replaceAll(req.body.message, "<", "&lt;"), ">", "&gt;")
     });
+    res.send("thanks!");
   }
 });
 
