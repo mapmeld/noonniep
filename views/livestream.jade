@@ -1,7 +1,11 @@
 head
   title Noonniep Livestream
   script(src="/socket.io/socket.io.js", type="text/javascript")
+  
   link(type="text/css", rel="stylesheet", href="/stylesheets/journal.min.css")
+  link(type="text/css", rel="stylesheet", href="/stylesheets/codemirror.css")
+  style(type="text/css") a{ color:#44a; } .navbar{ zoom: 0.6; } .CodeMirror {border: 2px inset #dee;} .CodeMirror-scroll{ height: auto; overflow: visible; } .popover-title{ font-size: 18px; }
+
 body
   div.navbar
     .navbar-inner
@@ -25,6 +29,7 @@ body
         ul#livedata(style="margin-left:-30px;border:1px solid #000;padding:6px;height:400px;overflow-y:scroll;")
       .span5
         h4#codename Program: #{program.name}
+        textarea#sketchplace #{program.code}
         p
           span Updated in realtime by&nbsp;
           a(href="http://socket.io", target="_blank") socket.io
@@ -36,5 +41,7 @@ body
     br
 
   script(src="http://code.jquery.com/jquery-1.9.1.min.js", type="text/javascript")
+  script(type="text/javascript", src="/scripts/codemirror.js")
+  script(type="text/javascript", src="/scripts/clike.js")
   script(src="/scripts/highcharts.js", type="text/javascript")
   script(src="/scripts/livestream.js", type="text/javascript")

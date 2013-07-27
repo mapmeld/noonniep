@@ -44,6 +44,12 @@ $("#graph").highcharts({
   }
 });
 
+  var myCodeMirror = CodeMirror.fromTextArea( $("#sketchplace")[0], {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-csrc"
+  });
+
 var socket = io.connect(window.location.hostname);
 socket.on('newprogram', function(data){
 });
