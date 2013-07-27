@@ -191,7 +191,7 @@ Blockly.Wiring.text_print = function() {
   // Print statement.
   var argument0 = Blockly.Wiring.valueToCode(this, 'TEXT',
       Blockly.Wiring.ORDER_NONE) || '\'\'';
-  return 'Serial.write(' + argument0 + ');\n';
+  return 'Serial.println(' + argument0 + ');\n';
 };
 
 // attempt CrowdBotBlock code
