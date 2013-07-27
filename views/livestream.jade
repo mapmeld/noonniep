@@ -31,12 +31,15 @@ body
         h4#codename Program: #{program.name}
         textarea#sketchplace #{program.code}
         p
-          span Updated in realtime by&nbsp;
-          a(href="http://socket.io", target="_blank") socket.io
-        
+          span Code highlighting by&nbsp;
+          a(href="http://codemirror.net/", target="_blank") CodeMirror        
         br
         br
         #graph(style="width:100%;height:300px;")
+        p
+          span Updated in realtime by&nbsp;
+          a(href="http://socket.io", target="_blank") socket.io
+
     br
     br
 
