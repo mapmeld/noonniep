@@ -8,44 +8,41 @@ if(getURLParameter("id") != "null"){
 }
 
 var datapoints = [ ];
-   $("#graph").highcharts({
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: ""
-      },
-      xAxis: {
-        labels: {
-          enabled: false
-        }
-      },
-      yAxis: {
-        title: {
-          text: "Reading"
-        }
-      },
-      legend: {
+$("#graph").highcharts({
+  chart: {
+    type: 'line'
+  },
+  title: {
+    text: ""
+  },
+  xAxis: {
+    labels: {
+      enabled: false
+    }
+  },
+  yAxis: {
+    title: {
+      text: "Reading"
+    }
+  },
+  legend: {
+    enabled: false
+  },
+  credits: {
+    enabled: false
+  },
+  series: [{
+    name: "Data Plot",
+    data: datapoints
+  }],
+  plotOptions: {
+    series: {
+      marker: {
         enabled: false
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: "Data Plot",
-        data: datapoints
-      }],
-      plotOptions: {
-        series: {
-          marker: {
-            enabled: false
-          }
-        }
-      } /*,
-      tooltip: {
-        formatter: tooltipFunction(key)
-      }*/
-    });
+      }
+    }
+  }
+});
 
 var socket = io.connect(window.location.hostname);
 socket.on('newprogram', function(data){
