@@ -62,6 +62,10 @@ The app will now be accessible at [http://localhost:3000/](http://localhost:3000
 
     heroku addons:add mongolab:starter
 
+# Enable web sockets for streaming data and programs to livestream page
+
+    heroku labs:enable websockets
+
 ## Miscellany
 
 - MIT licensed.
