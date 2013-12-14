@@ -1,6 +1,6 @@
 # About Noonniep
 
-Noonniep is an experimental rewrite of Arduino-over-the-web projects <a href="https://github.com/mapmeld/crowdbot">CrowdBot</a> and <a href="https://github.com/mapmeld/crowdbotblock">CrowdBotBlock</a>.
+Noonniep is a rewrite of Arduino-over-the-web projects <a href="https://github.com/mapmeld/crowdbot">CrowdBot</a> and <a href="https://github.com/mapmeld/crowdbotblock">CrowdBotBlock</a>.
 
 
 ## Key Features
@@ -39,39 +39,37 @@ rm db-unix.tar.gz
 
 ## Usage
 
-# Start the local Neo4j instance
-neo4j-community-1.8/bin/neo4j start
+### Start the local Neo4j instance
+    neo4j-community-1.8/bin/neo4j start
 
-# Run the app!
-npm start
+### Run the app
+    npm start
+
+### Connect the Robot
+    cd python-host
+    python MacCrowdBot.py
 
 The app will now be accessible at [http://localhost:3000/](http://localhost:3000/).
 
-# Uploading to Heroku
+## Uploading to Heroku
 
-## Create the app
+### Create the app
 
     heroku create APP_NAME
 
-# Add a Neo4j add-on (this sometimes takes a few tries)
+### Add a Neo4j add-on (this sometimes takes a few tries)
 
     heroku addons:add neo4j --neo4j-version 1.8.1
     git push heroku master
 
-# Add a MongoLab add-on to authenticate users
+### Add a MongoLab add-on to authenticate users
 
     heroku addons:add mongolab:starter
 
-# Enable web sockets for streaming data and programs to livestream page
+### Enable web sockets for streaming data and programs to livestream page
 
     heroku labs:enable websockets
 
 ## Miscellany
 
-- MIT licensed.
-
-[Neo4j]: http://www.neo4j.org/
-[node-neo4j]: https://github.com/thingdom/node-neo4j
-
-[coffeescript]: http://www.coffeescript.org/
-[streamline]: https://github.com/Sage/streamlinejs
+MIT license
