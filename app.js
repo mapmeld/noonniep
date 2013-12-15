@@ -10,7 +10,7 @@ var express = require('express')
   , middleware = require('./middleware')
   ;
 
-var app = module.exports = express.createServer();
+var app = express();
 
 // socket.io to sync programs, data between robot and clients
 var io = require('socket.io').listen(app);
