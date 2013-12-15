@@ -97,4 +97,3 @@ app.post('/speak', function(req, res, next){
 //app.get('/auth', middleware.require_auth_browser, routes.index);
 
 server.listen(process.env.PORT || 3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
