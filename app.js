@@ -7,7 +7,6 @@ var express = require('express')
   , routes = require('./routes')
   , mongoose = require('mongoose')
   , mongoose_auth = require('mongoose-auth')
-  , mongoStore = require('connect-mongo')(express)
   , middleware = require('./middleware')
   ;
 
@@ -21,7 +20,7 @@ var io = require('socket.io').listen(app);
 //});
 
 // use MongoDB to authenticate users
-var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || config.default_db_uri;
+var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || "mongodb://localhost/noonniep";
 mongoose.connect(db_uri);
 session_store = new mongoStore({url: db_uri});
 
