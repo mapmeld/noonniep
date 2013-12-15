@@ -7,13 +7,14 @@ var express = require('express')
   , routes = require('./routes')
   //, mongoose = require('mongoose')
   //, mongoose_auth = require('mongoose-auth')
-  , middleware = require('./middleware')
+  //, middleware = require('./middleware')
   ;
 
-var app = express();
+var app = express()
+  , server = require('http').createServer(app);
 
 // socket.io to sync programs, data between robot and clients
-var io = require('socket.io').listen(app);
+var io = require('socket.io').listen(server);
 //io.configure(function(){
   //io.set("transports", ["xhr-polling"]); 
   //io.set("polling duration", 10); 
@@ -93,7 +94,7 @@ app.post('/speak', function(req, res, next){
   }
 });
 
-app.get('/auth', middleware.require_auth_browser, routes.index);
+//app.get('/auth', middleware.require_auth_browser, routes.index);
 
-app.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
