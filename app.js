@@ -5,8 +5,8 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , mongoose = require('mongoose')
-  , mongoose_auth = require('mongoose-auth')
+  //, mongoose = require('mongoose')
+  //, mongoose_auth = require('mongoose-auth')
   , middleware = require('./middleware')
   ;
 
@@ -20,9 +20,9 @@ var io = require('socket.io').listen(app);
 //});
 
 // use MongoDB to authenticate users
-var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || "mongodb://localhost/noonniep";
-mongoose.connect(db_uri);
-session_store = new mongoStore({url: db_uri});
+//var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || "mongodb://localhost/noonniep";
+//mongoose.connect(db_uri);
+//session_store = new mongoStore({url: db_uri});
 
 // Configuration
 
@@ -37,7 +37,7 @@ app.configure(function(){
 
   app.use(express.session({secret: 'b9gjuw23dhj288a1', store: session_store,
       cookie: {maxAge: 24 * 60 * 60 * 1000}}));
-  app.use(mongoose_auth.middleware());
+  //app.use(mongoose_auth.middleware());
 
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));

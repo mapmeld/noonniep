@@ -15,8 +15,6 @@
     , "mongoose": ">=2.5.1"
     , "everyauth": ">=0.2.29"
     , "bcrypt": "0.7.x"
-    , "connect-mongo": ">=0.1.9"
-    , "connect": ">= 1.8.5"
   }
   , "engines":
     { "node": "0.10.x"
