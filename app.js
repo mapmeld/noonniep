@@ -35,8 +35,8 @@ app.configure(function(){
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
   app.use(express.cookieParser());
 
-  app.use(express.session({secret: 'b9gjuw23dhj288a1', store: session_store,
-      cookie: {maxAge: 24 * 60 * 60 * 1000}}));
+  //app.use(express.session({secret: 'b9gjuw23dhj288a1', store: session_store,
+  //    cookie: {maxAge: 24 * 60 * 60 * 1000}}));
   //app.use(mongoose_auth.middleware());
 
   app.use(app.router);
