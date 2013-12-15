@@ -51,10 +51,6 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-app.helpers({
-    title: 'Noonniep: Web Robots'
-});
-
 // Routes
 
 app.get('/', routes.site.index);
