@@ -1,5 +1,7 @@
 # About Noonniep
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mapmeld/noonniep.svg)](https://greenkeeper.io/)
+
 Noonniep is an experimental rewrite of Arduino-over-the-web projects <a href="https://github.com/mapmeld/crowdbot">CrowdBot</a> and <a href="https://github.com/mapmeld/crowdbotblock">CrowdBotBlock</a>.
 
 
